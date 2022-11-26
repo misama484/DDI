@@ -1,6 +1,8 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
+import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
+//import { TextInput } from 'react-native-paper';
+//import { Icon } from 'react-native-vector-icons/MaterialIcons';
 
 
 const Miguel = () => {
@@ -15,10 +17,13 @@ const Datos = () => {
   return (
     <View>
       <TextInput style = {estilo ? styles.florida : styles.upv} placeholder = "nombre"/>
-      <TextInput  placeholder="Modulo" />
+      <TextInput placeholder="Modulo" />
     </View>
   );
 };
+
+//Problema al importar libreria, error.
+//const myIcon = <Icon name="list" size={30} color="#900" />;
 
 const InformesBtn = () => {
   return (
@@ -28,12 +33,14 @@ const InformesBtn = () => {
   );
 };
 
-const estilo = 'florida';
+let nombre = 'upv';
+let estilo = true;
+if (nombre === 'florida'){ estilo = true; } else { estilo = false; }
+
 
 const isAdmin = true;
 
 const modulos2Dam = [
-  { nombre: 'Nombre', profesor: 'Profesor', horas: 'Horas'},
   { nombre: 'DIN', profesor: 'Manel', horas: 120 },
   { nombre: 'ADA', profesor: 'Juanmi', horas: 120 },
   { nombre: 'PMDM', profesor: 'Fran', horas: 100 },
@@ -43,6 +50,9 @@ const modulos2Dam = [
   { nombre: 'EIE', profesor: 'Manuel', horas: 60 },
   ];
 
+  //solo cambia el color del bloque entero, no caba el ded las lineas pares
+let fondoArray = true;
+if (modulos2Dam.length % 2 === 0){ fondoArray = true; } else { fondoArray = false; }
 
 class App extends Component {
   render() {
@@ -59,7 +69,7 @@ class App extends Component {
         </View>
         <View>
           {modulos2Dam.map((modulo) => (
-            <Text style={styles.arrayStyle}>
+            <Text style = {fondoArray ? styles.arrayStyle : styles.arrayStyle2}>
               {modulo.nombre} - {modulo.profesor} - {modulo.horas}
             </Text>
           ))}
@@ -110,7 +120,16 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     textAlign: 'right',
     placeholderTextColor: 'white',
-    backgroundColor: 'red',
+    backgroundColor: '#F48FB1',
+  },
+  arrayStyle2: {
+    fontSize: 20,
+    fontWeight: '600',
+    padding: 4,
+    paddingRight: 12,
+    textAlign: 'right',
+    placeholderTextColor: 'white',
+    backgroundColor: '#F8BBD0',
   },
 });
 
