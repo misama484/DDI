@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
-import {TextInput} from 'react-native-paper';
+import {View, Text, StyleSheet} from 'react-native';
+import {TextInput, Button} from 'react-native-paper';
 import {Icon} from 'react-native-vector-icons/MaterialIcons';
 
 const Miguel = nombre => {
@@ -16,27 +16,32 @@ const Datos = () => {
   return (
     <View style={estilo === 'florida' ? styles.florida : styles.upv} >
       <TextInput
+        label="Introduce tuas datos"
         left={<TextInput.Icon icon="eye" />}
         placeholder="nombre"
+        placeholderTextColor={estilo === 'florida' ? 'white' : 'orange'}
       />
-      <TextInput placeholder="Modulo" left={<TextInput.Icon icon="eye" />} />
+      <TextInput
+        label="Introduce tuas datos"
+        left={<TextInput.Icon icon="eye" />}
+        placeholder="nombre"
+        placeholderTextColor = {estilo === 'florida' ? 'white' : 'orange'}
+      />
     </View>
   );
 };
 
-//Problema al importar libreria, error. --> libreria instalada, OK
-//const myIcon = <Icon name="list" size={30} color="#900" />;
 
 const InformesBtn = () => {
   return (
     <View>
-      <Button title="Informes" icon="format-list-bulleted"/>
+      <Button mode="contained" icon="format-list-bulleted">INFORMES</Button>
     </View>
   );
 };
 
 
-let estilo = 'upv';
+let estilo = 'florida';
 
 
 const isAdmin = true;
@@ -51,8 +56,22 @@ const modulos2Dam = [
   {nombre: 'EIE', profesor: 'Manuel', horas: 60},
 ];
 
-//solo cambia el color del bloque entero, no caba el ded las lineas pares
-let fondoArray = true;
+
+const muestraLisa = () => {
+  return modulos2Dam.map((modulo, index) => {
+    return (
+      <View
+        key={index}
+        //si el index es par, cambia el color de fondo
+        style={index % 2 === 0 ? styles.arrayStyle : styles.arrayStyle2}>
+        <Text style={styles.textStyle}>{index + 1}</Text>
+        <Text style={styles.textStyle}>{modulo.nombre}</Text>
+        <Text style={styles.textStyle}>{modulo.profesor}</Text>
+        <Text style={styles.textStyle}>{modulo.horas + ' horas'}</Text>
+      </View>
+    );
+  });
+};
 
 
 class App extends Component {
@@ -62,13 +81,7 @@ class App extends Component {
         <View>{Miguel('Miguel Sanchez')}</View>
         <View>{Datos()}</View>
         <View>{isAdmin && InformesBtn()}</View>
-        <View>
-          {modulos2Dam.map(modulo => (
-            <Text style={fondoArray ? styles.arrayStyle : styles.arrayStyle2}>
-              {modulo.nombre} - {modulo.profesor} - {modulo.horas}
-            </Text>
-          ))}
-        </View>
+        <View>{muestraLisa()}</View>
       </>
     );
   }
@@ -80,7 +93,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
   },
   textStyle: {
-    fontSize: 24,
+    fontSize: 12,
     fontWeight: 'bold',
     color: 'black',
   },
