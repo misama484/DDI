@@ -1,75 +1,70 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, Text, StyleSheet, Button, TextInput} from 'react-native';
-//import { TextInput } from 'react-native-paper';
-//import { Icon } from 'react-native-vector-icons/MaterialIcons';
+import {View, Text, StyleSheet, Button} from 'react-native';
+import {TextInput} from 'react-native-paper';
+import {Icon} from 'react-native-vector-icons/MaterialIcons';
 
-
-const Miguel = () => {
+const Miguel = nombre => {
   return (
     <View>
-      <Text style={styles.textStyle}>Miguel Sanchez Martinez</Text>
+      <Text style={styles.textStyle}>{nombre}</Text>
     </View>
   );
 };
 
 const Datos = () => {
   return (
-    <View>
-      <TextInput style = {estilo ? styles.florida : styles.upv} placeholder = "nombre"/>
-      <TextInput placeholder="Modulo" />
+    <View style={estilo === 'florida' ? styles.florida : styles.upv} >
+      <TextInput
+        left={<TextInput.Icon icon="eye" />}
+        placeholder="nombre"
+      />
+      <TextInput placeholder="Modulo" left={<TextInput.Icon icon="eye" />} />
     </View>
   );
 };
 
-//Problema al importar libreria, error.
+//Problema al importar libreria, error. --> libreria instalada, OK
 //const myIcon = <Icon name="list" size={30} color="#900" />;
 
 const InformesBtn = () => {
   return (
     <View>
-      <Button title="Informes"/>
+      <Button title="Informes" icon="format-list-bulleted"/>
     </View>
   );
 };
 
-let nombre = 'upv';
-let estilo = true;
-if (nombre === 'florida'){ estilo = true; } else { estilo = false; }
+
+let estilo = 'upv';
 
 
 const isAdmin = true;
 
 const modulos2Dam = [
-  { nombre: 'DIN', profesor: 'Manel', horas: 120 },
-  { nombre: 'ADA', profesor: 'Juanmi', horas: 120 },
-  { nombre: 'PMDM', profesor: 'Fran', horas: 100 },
-  { nombre: 'PSP', profesor: 'Fran', horas: 60 },
-  { nombre: 'SGE', profesor: 'Belén', horas: 100 },
-  { nombre: 'Inglés', profesor: 'Caterina', horas: 40 },
-  { nombre: 'EIE', profesor: 'Manuel', horas: 60 },
-  ];
+  {nombre: 'DIN', profesor: 'Manel', horas: 120},
+  {nombre: 'ADA', profesor: 'Juanmi', horas: 120},
+  {nombre: 'PMDM', profesor: 'Fran', horas: 100},
+  {nombre: 'PSP', profesor: 'Fran', horas: 60},
+  {nombre: 'SGE', profesor: 'Belén', horas: 100},
+  {nombre: 'Inglés', profesor: 'Caterina', horas: 40},
+  {nombre: 'EIE', profesor: 'Manuel', horas: 60},
+];
 
-  //solo cambia el color del bloque entero, no caba el ded las lineas pares
+//solo cambia el color del bloque entero, no caba el ded las lineas pares
 let fondoArray = true;
-if (modulos2Dam.length % 2 === 0){ fondoArray = true; } else { fondoArray = false; }
+
 
 class App extends Component {
   render() {
     return (
       <>
+        <View>{Miguel('Miguel Sanchez')}</View>
+        <View>{Datos()}</View>
+        <View>{isAdmin && InformesBtn()}</View>
         <View>
-          {Miguel()}
-        </View>
-        <View>
-          {Datos()}
-        </View>
-        <View>
-          {isAdmin && InformesBtn()}
-        </View>
-        <View>
-          {modulos2Dam.map((modulo) => (
-            <Text style = {fondoArray ? styles.arrayStyle : styles.arrayStyle2}>
+          {modulos2Dam.map(modulo => (
+            <Text style={fondoArray ? styles.arrayStyle : styles.arrayStyle2}>
               {modulo.nombre} - {modulo.profesor} - {modulo.horas}
             </Text>
           ))}
@@ -96,7 +91,7 @@ const styles = StyleSheet.create({
   },
   upv: {
     backgroundColor: 'purple',
-    fontSize: 10,
+    fontSize: 18,
     fontWeight: '600',
     padding: 4,
     paddingLeft: 12,
@@ -106,7 +101,7 @@ const styles = StyleSheet.create({
   },
   florida: {
     backgroundColor: 'red',
-    fontSize: 12,
+    fontSize: 18,
     fontWeight: '600',
     padding: 4,
     paddingRight: 12,
