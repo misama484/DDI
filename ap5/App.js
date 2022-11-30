@@ -25,48 +25,12 @@ const Datos = () => {
 //Problema al importar libreria, error.
 //const myIcon = <Icon name="list" size={30} color="#900" />;
 
+
+
 const InformesBtn = () => {
   return (
     <View>
       <Button title="Informes"/>
-    </View>
-  );
-};
-
-let nombre = 'upv';
-let estilo = true;
-if (nombre === 'florida'){ estilo = true; } else { estilo = false; }
-
-
-const isAdmin = true;
-
-const modulos2Dam = [
-  { nombre: 'DIN', profesor: 'Manel', horas: 120 },
-  { nombre: 'ADA', profesor: 'Juanmi', horas: 120 },
-  { nombre: 'PMDM', profesor: 'Fran', horas: 100 },
-  { nombre: 'PSP', profesor: 'Fran', horas: 60 },
-  { nombre: 'SGE', profesor: 'Belén', horas: 100 },
-  { nombre: 'Inglés', profesor: 'Caterina', horas: 40 },
-  { nombre: 'EIE', profesor: 'Manuel', horas: 60 },
-  ];
-
-  //solo cambia el color del bloque entero, no caba el ded las lineas pares
-let fondoArray = true;
-if (modulos2Dam.length % 2 === 0){ fondoArray = true; } else { fondoArray = false; }
-
-class App extends Component {
-  render() {
-    return (
-      <>
-        <View>
-          {Miguel()}
-        </View>
-        <View>
-          {Datos()}
-        </View>
-        <View>
-          {isAdmin && InformesBtn()}
-        </View>
         <View>
           {modulos2Dam.map((modulo) => (
             <Text style = {fondoArray ? styles.arrayStyle : styles.arrayStyle2}>
@@ -74,10 +38,9 @@ class App extends Component {
             </Text>
           ))}
         </View>
-      </>
+    </View>
     );
-  }
-}
+  };
 
 const styles = StyleSheet.create({
   container: {
