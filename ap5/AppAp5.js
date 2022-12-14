@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, {Component} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import {TextInput, Button} from 'react-native-paper';
 import {Icon} from 'react-native-vector-icons/MaterialIcons';
 
@@ -81,7 +81,7 @@ class AppAp5 extends Component {
         <View>{Miguel('Miguel Sanchez')}</View>
         <View>{Datos()}</View>
         <View>{isAdmin && InformesBtn()}</View>
-        <View>{muestraLisa()}</View>
+        <ScrollView>{muestraLisa()}</ScrollView>
       </>
     );
   }
