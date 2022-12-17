@@ -14,17 +14,35 @@ const CalculaDni = () => {
         setLetra(cadena.substring(posicion,posicion + 1));
   };
 
+  const maxNumeros = () => {
+    if (nif.length > 8) {
+      setLetra('');
+    }
+  };
+
+  const comprueabNif = () => {
+    if (nif.length !== 8) {
+      setLetra('');
+    }
+  };
+
   return (
     <View style = {styles.container}>
       <Text style = { styles.title }>App para calcular la letra del NIF</Text>
-      <Text style = { styles.subtitle }>Introduce el NIF:</Text>
-      <TextInput
-        value={nif}
-        onChangeText={text => setNif(text)}
-        keyboardType="numeric"
-      />
-      <Button style = {styles.button} onPress= {calcularLetra} title="Calcular letra" />
-      <Text>La letra del NIF es: {letra}</Text>
+        <View style = {styles.contenedorNif}>
+          <TextInput
+            value={nif}
+            onChangeText={text => setNif(text)}
+            keyboardType="numeric"
+            placeholder="NIF"
+            style={styles.input}
+            maxLength={8}
+          />
+          <Text style={styles.input}>
+            {letra}
+          </Text>
+      </View>
+      <Button style={styles.button} onPress={calcularLetra} title="Calcular letra" />
     </View>
   );
 };
@@ -34,20 +52,30 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: 5,
   },
+  contenedorNif: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
   title: {
-    fontSize: 10,
-    align: 'center',
+    fontSize: 15,
+    textAlign: 'center',
     margin: 10,
+    color: 'purple',
   },
-  subtitle: {
-    fontSize: 10,
+  input: {
+    fontSize: 20,
     align: 'center',
     margin: 10,
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    color: 'red',
+    textDecorationLine: 'underline',
   },
-  buttoon: {
-    fontSize: 10,
-    align: 'center',
+  button: {
     margin: 10,
+    padding: 10,
+    color: 'green',
   },
 });
 

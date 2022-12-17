@@ -17,9 +17,9 @@ const AppAp7 = () => {
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
-    fonctcolor: 'green',
+    color: 'green',
     textAlign: 'center',
     margin: 20,
   },
