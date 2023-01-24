@@ -9,9 +9,9 @@ const CalculaDni = () => {
 
 
   const calcularLetra = () => {
-    var cadena = 'TRWAGMYFPDXBNJZSQVHLCKET';
+    var letras = 'TRWAGMYFPDXBNJZSQVHLCKET';
     var posicion = nif % 23;
-        setLetra(cadena.substring(posicion,posicion + 1));
+        setLetra(letras.substring(posicion,posicion + 1));
   };
 
   const maxNumeros = () => {
@@ -35,12 +35,19 @@ const CalculaDni = () => {
             onChangeText={text => setNif(text)}
             keyboardType="numeric"
             placeholder="NIF"
+            placeholderTextColor={'red'}
             style={styles.input}
             maxLength={8}
+            underlineColorAndroid = "red"
           />
-          <Text style={styles.input}>
+          <TextInput
+          style = {styles.input}
+          placeholder ="Letra"
+          placeholderTextColor={'blue'}
+          underlineColorAndroid = "blue"
+          editable = {false}>
             {letra}
-          </Text>
+          </TextInput>
       </View>
       <Button style={styles.button} onPress={calcularLetra} title="Calcular letra" />
     </View>

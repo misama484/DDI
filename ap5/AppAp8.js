@@ -1,15 +1,14 @@
 import React from 'react';
 import { View, Text,  StyleSheet } from 'react-native';
-import CalculaDni from './Components/CalculaDni';
 
 
-const AppAp7 = () => {
+
+const AppAp8 = () => {
 
 
   return (
     <View>
-      <Text style = {styles.title}>Calculador Letra NIF</Text>
-      <CalculaDni />
+      
     </View>
   );
 };
