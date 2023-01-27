@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text,  StyleSheet, FlatList } from 'react-native';
+import { View, Text,  StyleSheet, FlatList, Image, ImageBackground } from 'react-native';
+import ElementoLista from './Components/ElementoLista.js';
 
 const marcas = [
   {nombre: 'Peugeot',
@@ -20,19 +21,30 @@ const marcas = [
 const AppAp8 = () => {
 
   return (
-    <View>
-      <Text>Texto de prueba</Text>
+    <View style={styles.container}>
       <FlatList
-        data={[marcas]}>
-        renderItem={({item}) => <Text>{item.nombre}</Text>}
-
-      </FlatList>
+        data={marcas}
+        keyExtractor={(item) => item.nombre}
+        renderItem={({item}) => {
+          return (
+            <View>
+              
+              <ImageBackground source={{uri:item.img}} style={styles.image}>
+                <Text style = {styles.title}>{item.nombre}</Text>
+              </ImageBackground>
+            </View>
+          );
+        }}
+        />
     </View>
   );
 };
 
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   title: {
     fontSize: 30,
     fontWeight: 'bold',
@@ -41,6 +53,13 @@ const styles = StyleSheet.create({
     margin: 20,
     marginTop: 100,
   },
+
+  image: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center",
+    height: 400,
+  }
 });
 
 export default AppAp8;
