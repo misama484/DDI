@@ -10,24 +10,9 @@ const Aev2 = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Calculadora IMC</Text>
-      <View style={styles.cuadroDatos}>
-        <Text style={styles.titleCuadroDatos}>Datos</Text>        
-        <Text style={styles.titleDatos}>Peso</Text>
-        <TextInput 
-          style={styles.inputDatos} 
-          onChangeText={setPeso}
-          value= {peso}
-          placeholder="Peso"
-          />     
-        <Text style={styles.titleDatos}>Altura</Text>
-        <TextInput 
-          style={styles.inputDatos} 
-          onChangeText={setPeso}
-          value= {peso}
-          placeholder="Altura"
-          />
+      
         <Calculadora/>  
-      </View>
+      
       <Text>Created for 2n DAM</Text>
     </View>
   );
