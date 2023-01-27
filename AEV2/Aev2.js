@@ -13,7 +13,7 @@ const Aev2 = () => {
       
         <Calculadora/>  
       
-      <Text>Created for 2n DAM</Text>
+      <Text>Created by Miguel Sanchez for 2n DAM</Text>
     </View>
   );
 };
