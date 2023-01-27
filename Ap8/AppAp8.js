@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text,  StyleSheet, FlatList, Image, ImageBackground } from 'react-native';
-import ElementoLista from './Components/ElementoLista.js';
+
 
 const marcas = [
   {nombre: 'Peugeot',
@@ -20,23 +20,28 @@ const marcas = [
 
 const AppAp8 = () => {
 
-  return (
-    <View style={styles.container}>
-      <FlatList
-        data={marcas}
-        keyExtractor={(item) => item.nombre}
-        renderItem={({item}) => {
-          return (
-            <View>
-              
-              <ImageBackground source={{uri:item.img}} style={styles.image}>
-                <Text style = {styles.title}>{item.nombre}</Text>
-              </ImageBackground>
-            </View>
-          );
-        }}
-        />
+  const [items, setItems] = useState(marcas);
+
+  const elementoLista = ({item}) => (
+    <View >
+      <ImageBackground
+        source={{uri:item.img}}
+        style={styles.elementoLista}
+        >
+        <View>
+          <Text style={styles.texto}>{item.nombre}</Text>
+        </View>
+      </ImageBackground>
     </View>
+  )
+
+  return (
+    <FlatList
+      data={items}
+      renderItem={elementoLista}
+      keyExtractor={item => item.nombre}
+      style={styles.container}      
+    />
   );
 };
 
@@ -45,21 +50,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  title: {
+  title:{
     fontSize: 30,
     fontWeight: 'bold',
-    color: 'green',
-    textAlign: 'center',
+    textAlign: "center",
     margin: 20,
-    marginTop: 100,
   },
+  elementoLista: {
+    height: 150,
+    margin: 10,
+    backgroundColor: "grey",
+    borderWidth: 5,
+    borderColor: "black",
+    resizeMode: "center",
 
-  image: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
-    height: 400,
-  }
+  },
+  texto: {
+    fontSize: 30,    
+    color: 'white',
+    textAlign: 'left',
+    borderWidth: 1,
+    borderColor: "black",
+    margin: 10,
+  },  
+
 });
 
 export default AppAp8;
+
+
+
+
