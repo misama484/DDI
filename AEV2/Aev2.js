@@ -30,6 +30,10 @@ const styles = StyleSheet.create({
     textAlign: "center",
     margin: 10,
     color: "red",
+    textShadowColor: 'black', 
+    textShadowOffset: { width: 0.5, height: 0.5 }, 
+    textShadowRadius: 1,
+     
   }, 
   cuadroDatos:{
     backgroundColor: "white",
