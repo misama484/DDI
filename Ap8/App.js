@@ -18,7 +18,7 @@ const marcas = [
   ];
   
 
-const AppAp8 = () => {
+const App = () => {
 
   const [items, setItems] = useState(marcas);
 
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
 
 });
 
-export default AppAp8;
+export default App;
 
 
 
